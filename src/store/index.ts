@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
-import ruleSetsReducer from './ruleSetsSlice'
+import usersReducer from './usersSlice'
 
 const persistConfig = {
   key: 'users-app',
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, ruleSetsReducer)
+const persistedReducer = persistReducer(persistConfig, usersReducer)
 
 export const store = configureStore({
   reducer: {
-    ruleSets: persistedReducer,
+    users: persistedReducer,
   },
 })
 

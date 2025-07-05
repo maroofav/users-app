@@ -1,5 +1,5 @@
-import { memo } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { memo, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Box,
   Typography,
@@ -11,19 +11,20 @@ import {
 } from '@mui/material'
 import Grid from '@mui/material/Grid2'
 import { People } from '@mui/icons-material'
-import { axiosInstance } from '@utils/axiosInstance'
-import ENDPOINTS from '@utils/apiEndpoints'
+import { RootState, AppDispatch } from '@store/index'
+import { fetchUsers } from '@store/usersSlice'
 import { User } from '@ts/user.types'
 import UserCard from '@components/Users/UserCard'
 
 const Users = memo(() => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['users'],
-    queryFn: async () => {
-      const response = await axiosInstance.get(ENDPOINTS.USERS)
-      return response.data?.data?.users || []
-    },
-  })
+  const dispatch = useDispatch<AppDispatch>()
+  const { users, loading, error } = useSelector(
+    (state: RootState) => state.users,
+  )
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [dispatch])
 
   if (error) {
     return (
@@ -32,11 +33,7 @@ const Users = memo(() => {
           <Typography variant="h6" gutterBottom>
             Error Loading Users
           </Typography>
-          <Typography variant="body2">
-            {error instanceof Error
-              ? error.message
-              : 'An unexpected error occurred'}
-          </Typography>
+          <Typography variant="body2">{error}</Typography>
         </Alert>
       </Container>
     )
@@ -58,17 +55,17 @@ const Users = memo(() => {
       >
         <Box display="flex" alignItems="center" gap={2} mb={2}>
           <People sx={{ fontSize: 40 }} />
-          <Typography variant="h2" component="h1" fontWeight="bold">
+          <Typography variant="h3" component="h1" fontWeight="bold">
             Users
           </Typography>
         </Box>
-        <Typography variant="h3" sx={{ opacity: 0.9 }} fontWeight="normal">
+        <Typography variant="h6" sx={{ opacity: 0.9 }}>
           Manage and view user information across your organization
         </Typography>
       </Paper>
 
       {/* Loading State */}
-      {isLoading && (
+      {loading && (
         <Grid container spacing={3}>
           {[...Array(6)].map((_, index) => (
             <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
@@ -112,10 +109,10 @@ const Users = memo(() => {
       )}
 
       {/* Users Grid */}
-      {!isLoading && (
-        <Fade in={!isLoading} timeout={600}>
+      {!loading && (
+        <Fade in={!loading} timeout={600}>
           <Box>
-            {!data || data.length === 0 ? (
+            {!users || users.length === 0 ? (
               <Paper
                 sx={{
                   p: 6,
@@ -136,15 +133,15 @@ const Users = memo(() => {
             ) : (
               <>
                 <Typography
-                  variant="h3"
+                  variant="h6"
                   gutterBottom
                   sx={{ mb: 3 }}
                   className="text-gray-700"
                 >
-                  {data.length} user{data.length !== 1 ? 's' : ''} found
+                  {users.length} user{users.length !== 1 ? 's' : ''} found
                 </Typography>
                 <Grid container spacing={3}>
-                  {data.map((user: User) => (
+                  {users.map((user: User) => (
                     <Grid size={{ xs: 12, sm: 6, md: 4 }} key={user.id}>
                       <UserCard user={user} />
                     </Grid>
