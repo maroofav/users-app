@@ -55,11 +55,11 @@ const Users = memo(() => {
       >
         <Box display="flex" alignItems="center" gap={2} mb={2}>
           <People sx={{ fontSize: 40 }} />
-          <Typography variant="h3" component="h1" fontWeight="bold">
+          <Typography variant="h2" component="h1" fontWeight="bold">
             Users
           </Typography>
         </Box>
-        <Typography variant="h6" sx={{ opacity: 0.9 }}>
+        <Typography variant="h3" sx={{ opacity: 0.9 }}>
           Manage and view user information across your organization
         </Typography>
       </Paper>
@@ -123,17 +123,17 @@ const Users = memo(() => {
                 className="shadow-md"
               >
                 <People sx={{ fontSize: 64, color: 'grey.400', mb: 2 }} />
-                <Typography variant="h6" color="text.secondary" gutterBottom>
+                <Typography variant="h3" color="text.secondary" gutterBottom>
                   No users found
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="h4" color="text.secondary">
                   No users available at the moment
                 </Typography>
               </Paper>
             ) : (
               <>
                 <Typography
-                  variant="h6"
+                  variant="h3"
                   gutterBottom
                   sx={{ mb: 3 }}
                   className="text-gray-700"
