@@ -34,6 +34,7 @@ interface UserModalProps {
 const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
   return (
     <Dialog
+      data-testid="user-modal"
       open={open}
       onClose={onClose}
       maxWidth="md"
@@ -45,12 +46,16 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
         },
       }}
     >
-      <DialogTitle sx={{ pb: 1 }}>
+      <DialogTitle data-testid="modal-title" sx={{ pb: 1 }}>
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <Typography variant="h2" component="h2" fontWeight="bold">
             User Details
           </Typography>
-          <IconButton onClick={onClose} size="small">
+          <IconButton
+            data-testid="close-modal-button"
+            onClick={onClose}
+            size="small"
+          >
             <Close />
           </IconButton>
         </Box>
@@ -77,6 +82,7 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                 <Person sx={{ fontSize: 60 }} />
               </Avatar>
               <Typography
+                data-testid="modal-user-name"
                 variant="h2"
                 fontWeight="bold"
                 gutterBottom
@@ -85,6 +91,7 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                 {user.firstname} {user.lastname}
               </Typography>
               <Chip
+                data-testid="user-role-chip"
                 label={user.role}
                 color="primary"
                 variant="outlined"
@@ -113,7 +120,11 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                       <Typography variant="body2" color="text.secondary">
                         Username
                       </Typography>
-                      <Typography variant="body1" fontWeight="medium">
+                      <Typography
+                        data-testid="modal-username"
+                        variant="body1"
+                        fontWeight="medium"
+                      >
                         {user.username}
                       </Typography>
                     </Box>
@@ -125,7 +136,11 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                       <Typography variant="body2" color="text.secondary">
                         Email
                       </Typography>
-                      <Typography variant="body1" fontWeight="medium">
+                      <Typography
+                        data-testid="modal-email"
+                        variant="body1"
+                        fontWeight="medium"
+                      >
                         {user.email}
                       </Typography>
                     </Box>
@@ -137,7 +152,11 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                       <Typography variant="body2" color="text.secondary">
                         Role
                       </Typography>
-                      <Typography variant="body1" fontWeight="medium">
+                      <Typography
+                        data-testid="modal-role"
+                        variant="body1"
+                        fontWeight="medium"
+                      >
                         {user.role}
                       </Typography>
                     </Box>
@@ -149,7 +168,11 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                       <Typography variant="body2" color="text.secondary">
                         Join Date
                       </Typography>
-                      <Typography variant="body1" fontWeight="medium">
+                      <Typography
+                        data-testid="modal-join-date"
+                        variant="body1"
+                        fontWeight="medium"
+                      >
                         {user.join_date}
                       </Typography>
                     </Box>
@@ -163,7 +186,11 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
                 <Typography variant="h3" gutterBottom color="primary">
                   Description
                 </Typography>
-                <Typography variant="body1" sx={{ lineHeight: 1.6 }}>
+                <Typography
+                  data-testid="modal-description"
+                  variant="body1"
+                  sx={{ lineHeight: 1.6 }}
+                >
                   {user.description || 'No description available'}
                 </Typography>
               </Box>
@@ -173,7 +200,12 @@ const UserModal = memo(({ user, open, onClose }: UserModalProps) => {
       </DialogContent>
 
       <DialogActions sx={{ mt: 2, px: 3, pb: 3 }}>
-        <Button onClick={onClose} variant="contained" className="gradient-btn">
+        <Button
+          data-testid="modal-close-button"
+          onClick={onClose}
+          variant="contained"
+          className="gradient-btn"
+        >
           Close
         </Button>
       </DialogActions>

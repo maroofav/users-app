@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test'
 
+// Reusable API URL pattern
+const API_USERS_URL =
+  '**/9e06da9a-97cf-4701-adfc-9b9a5713bbb9.mock.pstmn.io/users'
+
 test.describe('Users App Integration Tests', () => {
   const mockUsers = [
     {
@@ -42,7 +46,7 @@ test.describe('Users App Integration Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     // Mock successful API response
-    await page.route('**/users', (route) =>
+    await page.route(API_USERS_URL, (route) =>
       route.fulfill({
         status: 200,
         contentType: 'application/json',
@@ -134,7 +138,7 @@ test.describe('Users App Integration Tests', () => {
 
   test('should handle API errors gracefully', async ({ page }) => {
     // Override the mock to simulate API error
-    await page.route('**/users', (route) => route.abort())
+    await page.route(API_USERS_URL, (route) => route.abort())
 
     await page.goto('/users')
 
@@ -148,7 +152,7 @@ test.describe('Users App Integration Tests', () => {
 
   test('should show empty state when no users returned', async ({ page }) => {
     // Override mock to return empty users array
-    await page.route('**/users', (route) =>
+    await page.route(API_USERS_URL, (route) =>
       route.fulfill({
         status: 200,
         contentType: 'application/json',

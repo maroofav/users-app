@@ -50,6 +50,7 @@ const UserCard = memo(({ user }: UserCardProps) => {
         <CardContent sx={{ flexGrow: 1, textAlign: 'center', py: 3, px: 2 }}>
           {/* User Name */}
           <Typography
+            data-testid="user-name"
             variant="h6"
             component="h2"
             fontWeight="600"
@@ -65,6 +66,7 @@ const UserCard = memo(({ user }: UserCardProps) => {
 
           {/* Description */}
           <Typography
+            data-testid="user-description"
             variant="body2"
             component="p"
             fontWeight="500"
@@ -89,6 +91,7 @@ const UserCard = memo(({ user }: UserCardProps) => {
         {/* Action section */}
         <CardActions sx={{ justifyContent: 'center', pb: 3, pt: 0 }}>
           <Button
+            data-testid="view-more-button"
             variant="contained"
             onClick={handleViewMore}
             className="gradient-btn transition-all duration-200"

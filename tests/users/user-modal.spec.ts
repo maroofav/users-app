@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test'
 
+// Reusable API URL pattern
+const API_USERS_URL =
+  '**/9e06da9a-97cf-4701-adfc-9b9a5713bbb9.mock.pstmn.io/users'
+
 test.describe('UserModal Component', () => {
   const mockUser = {
     id: '1',
@@ -15,7 +19,7 @@ test.describe('UserModal Component', () => {
 
   test.beforeEach(async ({ page }) => {
     // Mock the API response
-    await page.route('**/users', (route) =>
+    await page.route(API_USERS_URL, (route) =>
       route.fulfill({
         status: 200,
         contentType: 'application/json',
