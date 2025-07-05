@@ -1,25 +1,6 @@
-import { memo, ChangeEvent } from 'react'
+import { memo } from 'react'
 import { TextField, MenuItem } from '@mui/material'
-
-/**
- * Interface representing a rule set with an ID and name
- */
-interface RuleSet {
-  id: number
-  name: string
-}
-
-/**
- * Props for the RuleSetSelector component
- */
-interface RuleSetSelectorProps {
-  /** Currently selected rule set ID, or null if none selected */
-  value: number | null
-  /** Callback function triggered when selection changes */
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void
-  /** Array of available rule sets to choose from */
-  ruleSets: RuleSet[]
-}
+import { RuleSetSelectorProps } from '@ts/rule.types'
 
 /**
  * A dropdown component for selecting a rule set from a list of options.

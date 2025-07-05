@@ -71,16 +71,9 @@ export const customThemeVars = {
     linkColor: lightMode ? colors.purple[400] : colors.blue[600],
     backgroundColor: lightMode ? colors.white[900] : colors.blue[100],
     borderColor: lightMode ? colors.white[100] : colors.purple[200],
-    tableBorderColor: lightMode ? colors.grey[700] : colors.purple[200],
     boxShadow: lightMode
       ? '0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%)'
       : '0 11px 15px -7px rgb(255 255 255 / 20%), 0 24px 38px 3px rgb(255 255 255 / 14%), 0 9px 46px 8px rgb(255 255 255 / 12%)',
-    checkBoxColor: colors.grey[700],
-
-    menuColors: {
-      activeState: colors.purple[500],
-      inActiveState: colors.grey[700],
-    },
 
     notificationBackgroundColors: {
       success: colors.green[800],
@@ -105,89 +98,6 @@ export const customThemeVars = {
       paperBlue: {
         backgroundColor: colors.white[700],
         color: colors.blue[500],
-      },
-    },
-
-    tableColors: {
-      headerBackground: colors.grey[700],
-      headerColor: colors.black[300],
-      stateColors: {
-        active: {
-          backgroundColor: colors.green[900],
-          color: colors.green[100],
-        },
-        inactive: {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
-        deactivated: {
-          backgroundColor: colors.grey[700],
-          color: colors.grey[600],
-        },
-        disabled: {
-          backgroundColor: colors.grey[700],
-          color: colors.grey[600],
-        },
-        invited: {
-          backgroundColor: colors.orange[900],
-          color: colors.orange[200],
-        },
-        pending: {
-          backgroundColor: colors.purple[900],
-          color: colors.purple[400],
-        },
-        'pending-activation': {
-          backgroundColor: colors.purple[900],
-          color: colors.purple[400],
-        },
-        'invitation-fail': {
-          backgroundColor: colors.red[900],
-          color: colors.red[100],
-        },
-        'invitation-pending': {
-          backgroundColor: colors.grey[750],
-          color: colors.blue[400],
-        },
-        inviting: {
-          backgroundColor: colors.grey[750],
-          color: colors.blue[400],
-        },
-        applied: {
-          backgroundColor: colors.green[900],
-          color: colors.green[100],
-        },
-        excepted: {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
-        owner: {
-          backgroundColor: colors.green[900],
-          color: colors.green[100],
-        },
-        leader: {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
-        member: {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
-        found: {
-          backgroundColor: colors.green[900],
-          color: colors.green[100],
-        },
-        'not-found': {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
-        success: {
-          backgroundColor: colors.green[900],
-          color: colors.green[100],
-        },
-        failed: {
-          backgroundColor: colors.white[700],
-          color: 'inherit',
-        },
       },
     },
   },
@@ -307,6 +217,21 @@ export const appTheme = createTheme({
               customThemeVars.common.buttonColors.appBtn.backgroundColor,
             padding: '12px 18px',
           },
+
+          '&.gradient-btn': {
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            borderRadius: '8px',
+            textTransform: 'none',
+            padding: '8px 24px',
+            fontWeight: 600,
+            fontSize: '0.9rem',
+            transition: 'all 0.2s ease-in-out',
+            '&:hover': {
+              background: 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)',
+              transform: 'translateY(-1px)',
+            },
+          },
+
           '&.danger-contained-btn': {
             background:
               customThemeVars.common.buttonColors.error.backgroundColor,
@@ -408,7 +333,8 @@ export const appTheme = createTheme({
     MuiTypography: {
       styleOverrides: {
         root: {
-          fontFamily: '"Inter", "Roboto","Helvetica","Arial",sans-serif',
+          fontFamily: '"Roboto","Inter","Helvetica","Arial",sans-serif',
+          letterSpacing: '0.01em',
         },
       },
     },
@@ -433,88 +359,6 @@ export const appTheme = createTheme({
       },
     },
 
-    MuiListItem: {
-      // variants: [
-      //   {
-      //     props: { variant: 'custom' },
-      //     style: {
-      //       padding: '0px',
-      //     },
-      //   },
-      // ],
-    },
-
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          '&.selected': {
-            background: 'transparent', // `${colors.white[700]}`,
-          },
-        },
-      },
-    },
-
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: {
-          minWidth: '30px',
-        },
-      },
-
-      // variants: [
-      //   {
-      //     props: { type: 'icon' },
-      //     style: {
-      //       padding: '0px',
-      //     },
-      //   },
-      // ],
-    },
-
-    MuiCheckbox: {
-      styleOverrides: {
-        root: {
-          color: customThemeVars.common.checkBoxColor,
-
-          '&.MuiCheckbox-colorError > .MuiSvgIcon-root': {
-            fill: `${colors.red[100]} !important`,
-          },
-        },
-      },
-    },
-
-    MuiSelect: {
-      styleOverrides: {
-        root: {
-          '& .placeholder': {
-            color: colors.grey[600],
-          },
-          '&.app-dropdown': {
-            minHeight: '40px',
-            color: colors.grey[400],
-          },
-          '&.app-dropdown.small': {
-            minHeight: '36px',
-            color: colors.grey[400],
-          },
-          '&.app-dropdown fieldset': {
-            borderColor: colors.grey[700],
-          },
-          '&.app-dropdown:hover fieldset': {
-            borderColor: colors.grey[600],
-          },
-        },
-      },
-    },
-
-    MuiDivider: {
-      styleOverrides: {
-        root: {
-          borderColor: customThemeVars.common.borderColor,
-        },
-      },
-    },
-
     MuiPaper: {
       styleOverrides: {
         root: {
@@ -527,125 +371,49 @@ export const appTheme = createTheme({
         },
       },
     },
-    MuiSwitch: {
+
+    MuiAvatar: {
       styleOverrides: {
         root: {
-          '&.MuiSwitch-root': {
-            width: 42,
-            height: 26,
-            padding: 0,
-            '& .MuiSwitch-switchBase': {
-              padding: 0,
-              margin: 2,
-              transitionDuration: '300ms',
-              '&.Mui-checked': {
-                transform: 'translateX(16px)',
-                color: '#fff',
-                '& + .MuiSwitch-track': {
-                  backgroundColor: '#5D55F6',
-                  opacity: 1,
-                  border: 0,
-                },
-                '&.Mui-disabled + .MuiSwitch-track': {
-                  opacity: 0.5,
-                },
-              },
-              '&.Mui-focusVisible .MuiSwitch-thumb': {
-                color: colors.white[900],
-                border: '6px solid #fff',
-              },
-              '&.Mui-disabled .MuiSwitch-thumb': {},
-              '&.Mui-disabled + .MuiSwitch-track': {
-                opacity: 0.7,
-              },
-            },
-            '& .MuiSwitch-thumb': {
-              backgroundColor: colors.white[900],
-              boxSizing: 'border-box',
-              width: 22,
-              height: 22,
-              boxShadow:
-                '0 1px 3px 0 rgba(16,24,40,0.1), 0 1px 2px -1px rgba(16,24,40,0.1)',
-            },
-            '& .MuiSwitch-track': {
-              borderRadius: 26 / 2,
-              backgroundColor: colors.grey[700],
-              opacity: 1,
-            },
+          '&.large-avatar': {
+            width: 170,
+            height: 170,
+            marginBottom: '16px',
+            border: '4px dashed',
+            borderColor: colors.grey[700],
           },
-        },
-      },
-    },
-    MuiSlider: {
-      styleOverrides: {
-        root: {
-          '&.MuiSlider-root': {
-            color: colors.white[600],
-            height: 8,
-            '& .MuiSlider-track': {
-              border: 'none',
-              backgroundColor: '#5D55F6',
-            },
-            '& .MuiSlider-thumb': {
-              height: 24,
-              width: 24,
-              backgroundColor: '#5D55F6',
-              border: `2px solid ${colors.white[900]}`,
-              '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-                boxShadow: 'inherit',
-              },
-              '&::before': {
-                display: 'none',
-              },
-            },
-            '& .MuiSlider-rail': {
-              backgroundColor: colors.white[600],
-            },
-          },
-        },
-      },
-    },
-    MuiIconButton: {
-      styleOverrides: {
-        root: {
-          '&.actions-btn': {
-            borderRadius: '0',
+          '&.user-card-avatar': {
+            width: 120,
+            height: 120,
+            margin: 'auto',
+            border: '4px solid transparent',
+            outline: '4px solid rgba(255, 255, 255, 0.3)',
+            outlineOffset: '3px',
+            boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2)',
+            marginBottom: '6px',
           },
         },
       },
     },
 
-    MuiCollapse: {
+    MuiCard: {
       styleOverrides: {
         root: {
-          '& .MuiCollapse-wrapper.MuiCollapse-horizontal, & .MuiCollapse-wrapperInner.MuiCollapse-horizontal':
-            {
-              width: '100%',
+          '&.user-card': {
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+            transition: 'all 0.3s ease-in-out',
+            '&:hover': {
+              transform: 'translateY(-4px)',
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.15)',
             },
-        },
-      },
-    },
-
-    MuiPaginationItem: {
-      styleOverrides: {
-        root: {
-          '&.Mui-selected': {
-            backgroundColor: 'transparent',
-            color: `${colors.purple[400]}`,
-            fontWeight: 600,
-          },
-          '&.Mui-selected:hover': {
-            backgroundColor: `${colors.grey[750]}`,
           },
         },
       },
     },
   },
 })
-
-export const datepickerStyles = {
-  root: {
-    flexDirection: 'row-reverse',
-    height: '40px',
-  },
-}

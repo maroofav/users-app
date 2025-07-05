@@ -42,7 +42,7 @@ import {
 import EditTextComponent from '@components/Rules/EditTextComponent'
 import RuleSetSelector from '@components/Rules/RuleSetSelector'
 
-import { Rule } from '@ts/types'
+import { Rule } from '@ts/rule.types'
 
 /**
  * @component Rules

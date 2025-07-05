@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Rule, RuleSet } from '@ts/types'
+import { Rule, RuleSet } from '@ts/rule.types'
 import rulesData from '@data/rulesData.json'
 
 /**
